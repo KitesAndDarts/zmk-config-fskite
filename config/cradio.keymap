@@ -1,0 +1,482 @@
+// Copyrigmt (c) 2022 The ZMK Contributors
+// SPDX-License-Identifier: MIT
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+
+#define DEFAULT 1
+#define LOWER   0
+#define RAISE   2
+#define GAME    3
+
+/ {
+    behaviors {
+        ht: hold_tap {
+            label = "hold_tap";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <250>;
+            quick-tap-ms = <150>;
+            global-quick-tap;
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+    td1: TD1Shift2Z {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD1SHIFT2Z";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&StickyShft>, <&kp Z>;
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        CbShft {
+            bindings = <&StickyShft>;
+            key-positions = <12 13>;
+            timeout-ms = <25>;
+            layers = <0 1 2 4>;
+        };
+
+        CbCtrl {
+            bindings = <&StickyCtrl>;
+            key-positions = <12 11>;
+            timeout-ms = <25>;
+            layers = <0 1 2 4>;
+        };
+
+        CbAlt {
+            bindings = <&StickyAlt>;
+            key-positions = <10 11>;
+            timeout-ms = <25>;
+            layers = <0 1 2 4>;
+        };
+
+        CbGui {
+            bindings = <&kp LEFT_GUI>;
+            key-positions = <13 10>;
+            timeout-ms = <25>;
+            layers = <0 1 2 4>;
+            slow-release;
+        };
+
+        CbAltTab {
+            bindings = <&alt_tab>;
+            key-positions = <30 12>;
+            slow-release;
+            timeout-ms = <100>;
+            layers = <0 1 2 3 4>;
+        };
+
+        CbEsc {
+            bindings = <&kp ESC>;
+            key-positions = <0 1>;
+            timeout-ms = <100>;
+        };
+
+        CbPass {
+            bindings = <&pass>;
+            key-positions = <2 1>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbEmail {
+            bindings = <&email>;
+            key-positions = <3 2>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbCopy {
+            bindings = <&kp LC(C)>;
+            key-positions = <30 11>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbPaste {
+            bindings = <&kp LC(V)>;
+            key-positions = <30 13>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbUndo {
+            bindings = <&kp LC(Z)>;
+            key-positions = <30 10>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbRepeat {
+            bindings = <&key_repeat>;
+            key-positions = <30 14>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbTabUp {
+            bindings = <&kp LC(PG_UP)>;
+            key-positions = <12 10>;
+            timeout-ms = <25>;
+            layers = <0>;
+        };
+
+        CbTabDown {
+            bindings = <&kp LC(PAGE_DOWN)>;
+            key-positions = <11 13>;
+            timeout-ms = <25>;
+            layers = <0>;
+        };
+
+        CbBootloaderLeft {
+            bindings = <&bootloader>;
+            key-positions = <3 2 1 4>;
+            timeout-ms = <25>;
+            layers = <0>;
+        };
+
+        CbPause {
+            bindings = <&kp C_PAUSE>;
+            key-positions = <14 13>;
+            timeout-ms = <50>;
+            layers = <0>;
+        };
+
+        CbAria {
+            bindings = <&kp LC(SLASH)>;
+            key-positions = <23 22>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbCtrlA {
+            bindings = <&kp LC(A)>;
+            key-positions = <22 21>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbHome {
+            bindings = <&kp HOME>;
+            key-positions = <30 2>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbEnd {
+            bindings = <&kp END>;
+            key-positions = <30 3>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbMute {
+            bindings = <&kp C_MUTE>;
+            key-positions = <21 20>;
+            layers = <0>;
+            timeout-ms = <100>;
+        };
+
+        CbPower {
+            bindings = <&kp C_POWER>;
+            key-positions = <24 23 22 23 24 25 26 27>;
+            layers = <0>;
+            timeout-ms = <100>;
+        };
+
+        CbBootloaderRight {
+            bindings = <&bootloader>;
+            key-positions = <5 6 7 8>;
+            timeout-ms = <25>;
+            layers = <0>;
+        };
+
+        CbCtrlBackspace {
+            bindings = <&kp LC(BACKSPACE)>;
+            key-positions = <16 17>;
+            timeout-ms = <25>;
+            layers = <0>;
+        };
+
+        CbCadLayer {
+            bindings = <&tog 4>;
+            key-positions = <31 30>;
+            timeout-ms = <25>;
+            layers = <0 3 4 1 2>;
+        };
+
+        CbLeftPar {
+            bindings = <&kp LEFT_PARENTHESIS>;
+            key-positions = <7 6>;
+            timeout-ms = <25>;
+            layers = <0>;
+        };
+
+        CbRightPar {
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <7 8>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbSemi {
+            bindings = <&kp SEMI>;
+            key-positions = <27 28>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbLeft0 {
+            bindings = <&kp N0>;
+            key-positions = <10 11>;
+            timeout-ms = <50>;
+            layers = <1>;
+        };
+
+        CbLeft1 {
+            bindings = <&kp NUMBER_1>;
+            key-positions = <21 22>;
+            timeout-ms = <50>;
+            layers = <1>;
+        };
+
+        CbLeft2 {
+            bindings = <&kp NUMBER_2>;
+            key-positions = <23 21>;
+            timeout-ms = <50>;
+            layers = <1>;
+        };
+
+        CbLeft3 {
+            bindings = <&kp NUMBER_3>;
+            key-positions = <23 22>;
+            timeout-ms = <50>;
+            layers = <1>;
+        };
+
+        CbLeft4 {
+            bindings = <&kp NUMBER_4>;
+            key-positions = <11 12>;
+            timeout-ms = <50>;
+            layers = <1>;
+        };
+
+        CbLeft5 {
+            bindings = <&kp N5>;
+            key-positions = <11 13>;
+            timeout-ms = <50>;
+            layers = <1>;
+        };
+
+        CbLeft6 {
+            bindings = <&kp NUMBER_6>;
+            key-positions = <13 12>;
+            timeout-ms = <50>;
+            layers = <1>;
+        };
+
+        CbLeft7 {
+            bindings = <&kp N7>;
+            key-positions = <1 2>;
+            timeout-ms = <50>;
+            layers = <1>;
+        };
+
+        CbLeft8 {
+            bindings = <&kp N8>;
+            key-positions = <1 3>;
+            timeout-ms = <50>;
+            layers = <1>;
+        };
+
+        CbLeft9 {
+            bindings = <&kp N9>;
+            key-positions = <3 2>;
+            timeout-ms = <50>;
+            layers = <1>;
+        };
+
+        CbLeftTab {
+            bindings = <&kp TAB>;
+            key-positions = <31 20>;
+            timeout-ms = <25>;
+            layers = <0>;
+        };
+
+        CbGameLayer {
+            bindings = <&tog 3>;
+            key-positions = <33 32>;
+            timeout-ms = <25>;
+            layers = <0 1 2 3 4>;
+        };
+
+        CbEmergencyLayerReturn {
+            bindings = <&to 0>;
+            key-positions = <4 0>;
+            timeout-ms = <100>;
+            layers = <0 2 1 3 4>;
+        };
+
+        CbFSlash {
+            bindings = <&kp SLASH>;
+            key-positions = <27 26>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbTaskManager {
+            bindings = <&TaskManager>;
+            key-positions = <30 4>;
+            timeout-ms = <100>;
+            layers = <0>;
+        };
+
+        CbAltSpace {
+            bindings = <&kp LA(SPACE)>;
+            key-positions = <12 13 11>;
+            timeout-ms = <25>;
+            layers = <0 1 2 3 4>;
+        };
+
+        CbTextExtractor {
+            bindings = <&kp LS(LG(T))>;
+            key-positions = <30 24>;
+            timeout-ms = <25>;
+            layers = <0 1 2 3 4>;
+        };
+
+        CbCtrlDel {
+            bindings = <&kp LC(DEL)>;
+            key-positions = <17 18>;
+            timeout-ms = <25>;
+            layers = <0>;
+        };
+    };
+
+    macros {
+        pass: pass {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(E) &kp LS(L) &kp I &kp N0 &kp N8 &kp N1 &kp N3 &kp N0 &kp N7 &kp POUND>;
+            label = "PASS";
+        };
+
+        email: email {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp K &kp I &kp T &kp E &kp S &kp A &kp N &kp D &kp D &kp A &kp R &kp T &kp S &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+            label = "EMAIL";
+        };
+
+        alt_tab: alt_tab {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_ALT &kp TAB &mo 1>,
+                <&macro_release>,
+                <&kp TAB>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&kp LEFT_ALT &mo 1>;
+
+            label = "ALT_TAB";
+        };
+
+        Username: Username {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(K) &kp I &kp T &kp E &kp S &kp LS(A) &kp N &kp D &kp LS(D) &kp A &kp R &kp T &kp S>;
+            label = "USERNAME";
+        };
+
+        StickyShft: StickyShft {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap>, <&sk LEFT_SHIFT>;
+
+            label = "STICKYSHFT";
+            tap-ms = <5>;
+        };
+
+        StickyAlt: StickyAlt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap>, <&sk LEFT_ALT>;
+
+            label = "STICKYALT";
+            tap-ms = <5>;
+        };
+
+        StickyCtrl: StickyCtrl {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap>, <&sk LCTRL>;
+
+            label = "STICKYCTRL";
+            tap-ms = <5>;
+        };
+
+        TaskManager: TaskManager {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RCTRL &kp LEFT_SHIFT &kp ESC>;
+            label = "TASKMANAGER";
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+&kp Q  &kp W  &kp F  &kp P        &kp PERIOD    &kp J      &kp L      &kp U  &kp Y  &kp SQT
+&kp A  &kp R  &kp S  &kp T        &kp G         &kp M      &kp N      &kp E  &kp I  &kp O
+&kp Z  &kp X  &kp C  &kp D        &kp V         &kp COMMA  &kp H      &kp B  &kp K  &kp TAB
+                     &lt 1 ENTER  &kp SPACE     &kp BSPC   &lt 2 DEL
+            >;
+        };
+
+        nav_layer {
+            bindings = <
+&kp SLASH  &kp C_VOL_DN  &kp UP_ARROW  &kp C_VOL_UP  &kp UNDER    &kp EQUAL  &kp N7  &kp N8  &kp N9  &kp ASTRK
+&kp LSHFT  &kp LEFT      &kp DOWN      &kp RIGHT     &to 3        &kp SEMI   &kp N4  &kp N5  &kp N6  &kp N0
+&kp CAPS   &kp LBRC      &kp RBRC      &kp LBKT      &kp RBKT     &kp MINUS  &kp N1  &kp N2  &kp N3  &kp BSLH
+                                       &trans        &trans       &trans     &trans
+            >;
+        };
+
+        sym_layer {
+            bindings = <
+&kp F1       &kp F2      &kp F3     &kp F4     &kp F5        &kp F6        &kp F7        &kp F8        &kp F9        &kp F10
+&kp F11      &kp F12     &kp HOME   &kp END    &to 3         &kp HASH      &kp LPAR      &kp RPAR      &kp FSLH      &kp AMPS
+&studio_unlock  &kp DOLLAR  &kp CARET  &kp GRAVE  &bt BT_CLR    &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+                                    &trans     &trans        &trans        &trans
+            >;
+        };
+
+        game_layer {
+            bindings = <
+&kp ESC    &kp Q  &kp W  &kp E      &kp R        &kp Y       &kp U      &kp I      &kp O    &kp P
+&kp LSHFT  &kp A  &kp S  &kp D      &kp F        &kp H       &kp J      &kp K      &kp L    &kp SEMI
+&to 0      &kp Z  &kp X  &kp C      &kp V        &kp N       &kp M      &kp COMMA  &kp DOT  &kp FSLH
+                         &kp ENTER  &kp SPACE    &kp PERIOD  &kp COMMA
+            >;
+        };
+
+        cad_layer {
+            bindings = <
+&kp ESC  &kp N7  &kp N8  &kp N9     &kp LEFT     &trans  &trans  &trans  &trans  &trans
+&kp N0   &kp N4  &kp N5  &kp N6     &kp RIGHT    &trans  &trans  &trans  &trans  &trans
+&kp DOT  &kp N1  &kp N2  &kp N3     &kp MINUS    &trans  &trans  &trans  &trans  &trans
+                         &kp LSHFT  &kp BSPC     &trans  &trans
+            >;
+        };
+    };
+};
